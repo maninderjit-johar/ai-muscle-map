@@ -52,10 +52,11 @@ def build(sex: str):
         "triceps": back & upper_arm & ~shoulder_cap,
         "forearms": forearm,
         "abs": front & (np.abs(x) < 0.22) & (y > 0.18) & (y < 0.39),
-        "lats": back & torso & (np.abs(x) > 0.10) & (y > 0.14) & (y < 0.51),
+        "lats": back & torso & ~upper_arm & ~shoulder_cap & (np.abs(x) > 0.10) & (np.abs(x) < 0.29) & (y > 0.31) & (y < 0.57),
+        "traps": back & (np.abs(x) < 0.29) & (y > 0.52) & (y < 0.73),
         "glutes": back & (
-            ellipse(points, [-0.13, -0.06, -0.10], [0.14, 0.08, 0.12])
-            | ellipse(points, [0.13, -0.06, -0.10], [0.14, 0.08, 0.12])
+            ellipse(points, [-0.13, 0.08, -0.10], [0.14, 0.07, 0.12])
+            | ellipse(points, [0.13, 0.08, -0.10], [0.14, 0.07, 0.12])
         ),
         "quads": front & thigh,
         "hamstrings": back & thigh,

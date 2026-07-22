@@ -20,14 +20,14 @@ type Exercise = { id: number; name: string; sets: number; reps: number };
 const exerciseCatalog: Record<string, Record<string, number>> = {
   "Barbell Bench Press": { chest: 1, shoulders: .42, triceps: .62, forearms: .12 },
   "Push-Up": { chest: .9, shoulders: .35, triceps: .55, abs: .18, forearms: .1 },
-  "Shoulder Press": { shoulders: 1, triceps: .62, chest: .22 },
-  "Lat Pulldown": { lats: 1, biceps: .58, forearms: .38 },
-  "Seated Row": { lats: .92, biceps: .52, shoulders: .2, forearms: .42 },
-  "Face Pull": { shoulders: .82, lats: .58, biceps: .2, forearms: .28 },
+  "Shoulder Press": { shoulders: 1, traps: .35, triceps: .62, chest: .22 },
+  "Lat Pulldown": { lats: 1, traps: .28, biceps: .58, forearms: .38 },
+  "Seated Row": { lats: .92, traps: .52, biceps: .52, shoulders: .2, forearms: .42 },
+  "Face Pull": { shoulders: .82, traps: .9, lats: .58, biceps: .2, forearms: .28 },
   "Biceps Curl": { biceps: 1, forearms: .5 },
   "Triceps Pushdown": { triceps: 1, forearms: .22 },
   "Back Squat": { quads: 1, glutes: .72, hamstrings: .35, abs: .25 },
-  "Romanian Deadlift": { hamstrings: 1, glutes: .82, lats: .25, forearms: .45 },
+  "Romanian Deadlift": { hamstrings: 1, glutes: .82, lats: .25, traps: .18, forearms: .45 },
   "Walking Lunge": { quads: .82, glutes: .78, hamstrings: .38, calves: .2 },
   "Standing Calf Raise": { calves: 1 },
   "Plank": { abs: 1, shoulders: .22, glutes: .12 },
@@ -60,11 +60,11 @@ const presets: Record<string, Omit<Exercise, "id">[]> = {
   ],
 };
 
-const muscleKeys = ["chest", "shoulders", "triceps", "lats", "biceps", "forearms", "abs", "quads", "glutes", "hamstrings", "calves"];
+const muscleKeys = ["chest", "shoulders", "triceps", "lats", "traps", "biceps", "forearms", "abs", "quads", "glutes", "hamstrings", "calves"];
 
 const names: Record<string, string> = {
   chest: "Chest", shoulders: "Shoulders", triceps: "Triceps",
-  lats: "Back", biceps: "Biceps", forearms: "Forearms", abs: "Abs & core",
+  lats: "Lats", traps: "Traps", biceps: "Biceps", forearms: "Forearms", abs: "Abs & core",
   quads: "Quads", glutes: "Glutes", hamstrings: "Hamstrings", calves: "Calves",
 };
 
@@ -92,7 +92,7 @@ export default function Home() {
 
   const balance = useMemo(() => ({
     PUSH: Math.round((scores.chest + scores.shoulders + scores.triceps) / 3),
-    PULL: Math.round((scores.lats + scores.biceps) / 2),
+    PULL: Math.round((scores.lats + scores.traps + scores.biceps) / 3),
     LEGS: Math.round((scores.quads + scores.glutes + scores.hamstrings + scores.calves) / 4),
     CORE: scores.abs,
   }), [scores]);

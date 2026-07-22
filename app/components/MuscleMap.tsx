@@ -35,8 +35,8 @@ function activationColor(score: number) {
 }
 
 function AnatomicalBody({ bodyType, scores, onSelect }: Omit<Props, "view" | "selected">) {
-  const male = useGLTF("/models/male-segmented.glb?v=upper-thighs-2");
-  const female = useGLTF("/models/female-segmented.glb?v=upper-thighs-2");
+  const male = useGLTF("/models/male-segmented.glb?v=back-traps-2");
+  const female = useGLTF("/models/female-segmented.glb?v=back-traps-2");
   const scene = bodyType === "male" ? male.scene : female.scene;
 
   const model = useMemo(() => {
@@ -121,5 +121,5 @@ export function MuscleMap(props: Props) {
   </Canvas>;
 }
 
-useGLTF.preload("/models/male-segmented.glb?v=upper-thighs-2");
-useGLTF.preload("/models/female-segmented.glb?v=upper-thighs-2");
+useGLTF.preload("/models/male-segmented.glb?v=back-traps-2");
+useGLTF.preload("/models/female-segmented.glb?v=back-traps-2");
