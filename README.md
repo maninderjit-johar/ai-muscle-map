@@ -2,7 +2,7 @@
 
 An interactive workout intelligence prototype that translates exercises, sets, and reps into estimated muscle activation on selectable male and female 3D anatomy models.
 
-**[Try the live demo](https://ai-muscle-map.devsndesigners.chatgpt.site)**
+**[Try the live demo](https://ai-muscle-map.vercel.app)**
 
 ## Highlights
 
